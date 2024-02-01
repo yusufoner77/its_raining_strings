@@ -1,38 +1,46 @@
 #include <iostream>
 #include <vector>
 #include "vector.hpp"
+#include <limits>
 using namespace std;
 
 int main() {
 
-    cout << "Welcome to Yusuf's Business Sorting Program" << endl;
+    cout << "Welcome to Yusuf's Business Sorting Program!" << endl << endl;
 
     vector<string> list;
 
     string input;
 
-    get_business(input);
+    string answer;
 
-    // cout << "Please enter the name of a business: ";
-    // getline(cin, input);
+    do {
+    
+        get_business(input);
 
-    add_business(input, list);
+        add_business(input, list);
 
-    get_business(input);
+        print(list);
+        
+        cin.clear();
 
-    // cout << "Please enter the name of a business: ";
-    // getline(cin, input);
+        cout << "Another business?  ";
+        cin >> answer;
+        cout << endl;
 
-    add_business(input, list);
+        cin.clear();
+        std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
 
-    get_business(input);
+        if(answer == "No" || answer == "no" || answer == "N" || answer == "n"){
+            
+            cout << "Thanks for choosing Yusuf's Business Sorting Program!" << endl;
+            exit(0);
+        }
 
-    // cout << "Please enter the name of a business: ";
-    // getline(cin, input);
+    }
+    while (answer == "Yes" || answer == "yes" || answer == "y" || answer == "Y");
 
-    add_business(input, list);
-
-    print(list);
+    cout << "Thanks for choosing Yusuf's Business Sorting Program!" << endl;
 
     return 0;
 
